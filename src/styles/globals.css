@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html {
+    @apply bg-canvas text-text antialiased;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-hero-mesh font-sans text-text;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .surface-panel {
+    @apply rounded-[28px] border border-white/70 bg-surface/85 shadow-soft backdrop-blur-sm;
+  }
+
+  .surface-card {
+    @apply rounded-[24px] border border-line/80 bg-white/95 shadow-[0_14px_32px_rgba(26,20,15,0.06)];
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
