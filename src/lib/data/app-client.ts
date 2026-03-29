@@ -30,6 +30,7 @@ import {
   updateShortlistItem as updateShortlistItemDemo,
   uploadScreens as uploadScreensDemo,
 } from '@/lib/data/demo-store'
+import { generateClusterSuggestions } from '@/lib/data/cluster-generator'
 import { getAppUrl, isSupabaseConfigured, supabase } from '@/lib/supabase/client'
 import type { Database } from '@/lib/supabase/types'
 
@@ -207,9 +208,10 @@ async function uploadToSupabase(
     .from('clusters')
     .select('id')
     .eq('project_id', projectId)
-  const { clusters, screenUpdates } = await import('@/lib/data/cluster-generator').then(
-    ({ generateClusterSuggestions }) =>
-      generateClusterSuggestions(projectId, screenRows, existingClusters?.length ?? 0),
+  const { clusters, screenUpdates } = generateClusterSuggestions(
+    projectId,
+    screenRows,
+    existingClusters?.length ?? 0,
   )
 
   if (clusters.length > 0) {

@@ -25,13 +25,17 @@ Pattern Miner is a light, premium research workspace for designers who need to t
 
 ## Current Status
 
-The repository baseline is in place:
+The MVP flow is implemented end to end:
 
-- Vite + React + TypeScript + Tailwind setup
-- App shell, routing, and shared design tokens
-- Supabase client scaffolding and first SQL migration
-- Demo-mode data layer for local UI exploration when env is not configured
-- Initial page structure for the full MVP flow
+- Magic-link entry with Supabase-ready auth and demo-mode fallback
+- Dashboard with project cards, empty state, and quick-start guidance
+- Create project form with validation and redirect into upload
+- Upload flow with dropzone, validation, queue, progress, and storage-ready service layer
+- Library with search, filters, sort, selection, compare CTA, and shortlist add
+- Clusters overview with rename, merge selection, split, and preview stacks
+- Cluster detail with notes, tags, move and ungroup actions, compare, and shortlist add
+- Compare view for 2 to 4 screens
+- Shortlist board with regroup, reorder, and remove actions
 
 ## Getting Started
 
@@ -64,6 +68,10 @@ VITE_SUPABASE_ANON_KEY=
 
 If Supabase env vars are missing, the app falls back to a demo-mode auth/data flow so the product UI can still be explored locally.
 
+## Demo Mode
+
+Demo mode exists only to make local UI exploration possible before Supabase is configured. The real app architecture still points at Supabase for auth, database, and storage.
+
 ## Quality Checks
 
 ```bash
@@ -76,10 +84,12 @@ npm run build
 
 - SQL schema lives in [supabase/migrations/0001_init.sql](/Users/nix/Documents/pattern-miner/supabase/migrations/0001_init.sql)
 - The first migration creates the core MVP tables, storage bucket, and RLS policies
+- Client setup lives in [src/lib/supabase/client.ts](/Users/nix/Documents/pattern-miner/src/lib/supabase/client.ts)
+- The app data abstraction lives in [src/lib/data/app-client.ts](/Users/nix/Documents/pattern-miner/src/lib/data/app-client.ts)
 
-## Next Build Steps
+## What Comes Next
 
-- Finish auth entry and callback flow
-- Build dashboard and create-project experience
-- Connect upload, library, cluster, compare, and shortlist flows end to end
-- Polish states, docs, and deployment readiness for Vercel
+- Replace placeholder cluster generation with a smarter grouping service
+- Add richer metadata extraction, dedupe hints, and better merge and split ergonomics
+- Add tests around the main product flow and repository adapters
+- Prepare deployment config and Supabase project setup for Vercel
