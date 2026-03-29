@@ -113,6 +113,41 @@ export function DashboardPage() {
         </Link>
       </section>
 
+      <section className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
+        <Card className="bg-white/80">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">Flow snapshot</p>
+          <h3 className="mt-3 text-2xl font-semibold text-text">The full MVP path is already connected.</h3>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {['Entry', 'Dashboard', 'Create', 'Upload', 'Library', 'Clusters', 'Compare', 'Shortlist'].map((step) => (
+              <Badge key={step} tone="neutral">
+                {step}
+              </Badge>
+            ))}
+          </div>
+          <p className="mt-5 text-sm leading-6 text-muted">
+            Keep each board narrow in scope. Pattern Miner works best when one project maps to one research question or one product surface area.
+          </p>
+        </Card>
+
+        <Card className="bg-white/80">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-muted">What to do next</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-[22px] bg-canvas px-4 py-4">
+              <p className="text-sm font-semibold text-text">1. Create</p>
+              <p className="mt-2 text-sm leading-6 text-muted">Name the board and anchor its platform and category.</p>
+            </div>
+            <div className="rounded-[22px] bg-canvas px-4 py-4">
+              <p className="text-sm font-semibold text-text">2. Upload</p>
+              <p className="mt-2 text-sm leading-6 text-muted">Add a tight batch of screenshots and validate them before storage.</p>
+            </div>
+            <div className="rounded-[22px] bg-canvas px-4 py-4">
+              <p className="text-sm font-semibold text-text">3. Curate</p>
+              <p className="mt-2 text-sm leading-6 text-muted">Review clusters, compare strong variants, and build a shortlist.</p>
+            </div>
+          </div>
+        </Card>
+      </section>
+
       {projects.length === 0 ? (
         <EmptyState
           eyebrow="Empty state"

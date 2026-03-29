@@ -70,7 +70,7 @@ export function CreateProjectPage() {
         <p className="mt-5 text-lg leading-8 text-muted">
           A focused name, platform, and category make the rest of the flow feel deliberate. Keep it tight, product-specific, and easy to scan later.
         </p>
-        <div className="mt-8 space-y-4">
+            <div className="mt-8 space-y-4">
           {[
             'Start with one product or one research angle per board.',
             'Platform and category help keep the library filterable later.',
@@ -80,6 +80,11 @@ export function CreateProjectPage() {
               {tip}
             </div>
           ))}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2">
+          <Badge tone="neutral">Routes to upload</Badge>
+          <Badge tone="neutral">Keeps metadata structured</Badge>
+          <Badge tone="neutral">Prepares library filters</Badge>
         </div>
       </section>
 
@@ -139,6 +144,13 @@ export function CreateProjectPage() {
               <span className="mt-2 block text-sm text-[#b85e46]">{errors.description.message}</span>
             ) : null}
           </label>
+
+          <div className="rounded-[24px] bg-canvas px-5 py-5">
+            <p className="text-sm font-semibold text-text">After creation</p>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              You land directly in upload, then the board becomes a searchable library with cluster suggestions generated from the incoming batch.
+            </p>
+          </div>
 
         {error ? (
             <ErrorState title="Project could not be created" description={error} />
